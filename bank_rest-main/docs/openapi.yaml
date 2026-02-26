@@ -1,0 +1,18 @@
+openapi: 3.0.3
+info:
+  title: Bank Cards API
+  version: 1.0.0
+  description: REST API for managing bank cards
+
+servers:
+  - url: http://localhost:8080
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
