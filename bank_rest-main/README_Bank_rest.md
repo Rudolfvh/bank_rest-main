@@ -1,15 +1,92 @@
 
 # Bank Cards REST API
 
-Backend-приложение для управления банковскими картами с JWT-аутентификацией, ролевой моделью доступа и REST API.
+ Backend-приложение для управления банковскими картами с JWT-аутентификацией, ролевой моделью доступа и REST API.
 
 Приложение реализует безопасную систему управления пользователями и банковскими картами с разделением прав доступа (ADMIN / USER).
 
-
-## Основной функционал
+# Запуск приложения Локальный (без Docker)
 
 ---
-### Аутентификация и безопасность
+## Требования
+
+Установлен Java 17
+
+Установлен Maven 3+
+
+Установлен и запущен PostgreSQL
+
+---
+## Шаг 1. Создать базу данных
+
+Создайте базу данных вручную:
+```
+CREATE DATABASE bankdb;
+```
+---
+## Шаг 2. Настроить подключение к БД
+
+В application.yml или application.properties укажите:
+
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/bankdb
+spring.datasource.username=bank
+spring.datasource.password=bank
+spring.jpa.hibernate.ddl-auto=update
+```
+---
+## Шаг 3. Собрать проект
+```
+mvn clean package
+```
+---
+## Шаг 4. Запустить приложение
+
+### Вариант 1:
+```
+mvn spring-boot:run
+```
+### Вариант 2:
+```
+java -jar target/bank-rest.jar
+```
+После запуска приложение будет доступно по адресу:
+```
+http://localhost:8080
+```
+Swagger UI:
+```
+http://localhost:8080/swagger-ui/index.html
+```
+---
+
+## 2. Запуск через Docker Compose 
+## Шаг 1. Собрать проект
+
+```bash
+mvn clean package
+```
+
+Затем
+
+```bash
+docker-compose up --build
+```
+
+После запуска:
+```
+http://localhost:8080
+```
+Swagger UI:
+```
+http://localhost:8080/swagger-ui/index.html
+```
+---
+
+# Основной функционал
+
+---
+## Аутентификация и безопасность
 
 * Регистрация пользователей (если реализовано)
 * Авторизация по логину и паролю
@@ -259,7 +336,6 @@ Database
 
 * PostgreSQL
 * JPA / Hibernate
-* Автоматическая генерация схемы (или Flyway при наличии)
 
 Основные таблицы:
 
