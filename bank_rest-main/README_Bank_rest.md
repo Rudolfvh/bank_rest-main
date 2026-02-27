@@ -140,14 +140,28 @@ http://localhost:8080/swagger-ui/index.html
 ### POST /auth/login
 
 Получение JWT токена.
+
+---
+Role: ADMIN
 ```
 Request:
 
 {
-"username": "admin",
+"username": "admin1",
 "password": "admin123"
 }
 ```
+---
+Role: USER
+```
+Request:
+
+{
+"username": "user1",
+"password": "admin123"
+}
+```
+---
 ```
 Response:
 
